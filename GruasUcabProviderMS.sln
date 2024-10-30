@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProviderMS.Infrastructure",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProviderMS.Core", "ProviderMS.Core\ProviderMS.Core.csproj", "{DCC4E20E-2415-4D2B-A812-890272250463}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProviderMS.Commons", "ProviderMS.Commons\ProviderMS.Commons.csproj", "{6EB00CC0-1094-47BF-81DA-CC71AE8F1DAC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{DCC4E20E-2415-4D2B-A812-890272250463}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCC4E20E-2415-4D2B-A812-890272250463}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCC4E20E-2415-4D2B-A812-890272250463}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EB00CC0-1094-47BF-81DA-CC71AE8F1DAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EB00CC0-1094-47BF-81DA-CC71AE8F1DAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EB00CC0-1094-47BF-81DA-CC71AE8F1DAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EB00CC0-1094-47BF-81DA-CC71AE8F1DAC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
