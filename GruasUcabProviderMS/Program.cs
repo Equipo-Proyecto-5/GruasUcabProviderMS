@@ -1,6 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using ProviderMS.Core.Database;
 using ProviderMS.Infrastructure.Database;
+using MediatR;
+using ProviderMS.Core.Repositories;
+using ProviderMS.Infrastructure.Repositories;
+using ProviderMS.Application.Commands;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +19,16 @@ builder.Services.AddTransient<IProviderDbContext, ProviderDbContext>();
 var dbConnectionString = builder.Configuration.GetValue<string>("DBConnectionString");
 builder.Services.AddDbContext<ProviderDbContext>(options =>
     options.UseNpgsql(dbConnectionString));
+
+
+builder.Services.AddScoped<IProveedorRepository, ProveedorRepository>();
+builder.Services.AddMediatR(typeof(CreateProveedorCommand).Assembly);
+
+
+
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
