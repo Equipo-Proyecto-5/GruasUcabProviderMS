@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+
 
 namespace ProviderMS.Domain.Entities
 {
@@ -17,6 +15,29 @@ namespace ProviderMS.Domain.Entities
         public string TipoDocumentoIdentidad { get; private set; }
         public string NumeroDocumentoIdentidad { get; private set; }
         public string Estatus { get; private set; }
+
+        
+
+        public Proveedor(Guid id, string denominacionComercial, string razonSocial, string direccionFisica, string tipoDocumentoIdentidad, string numeroDocumentoIdentidad, string estatus)
+        {
+            Id = id;
+            DenominacionComercial = denominacionComercial;
+            RazonSocial = razonSocial;
+            DireccionFisica = direccionFisica;
+            TipoDocumentoIdentidad = tipoDocumentoIdentidad;
+            NumeroDocumentoIdentidad = numeroDocumentoIdentidad;
+            Estatus = estatus;
+        }
+
+        public Proveedor() { }
+
+        
+        public void ActualizarEstatus(string estatus)
+        {
+            Estatus = estatus;
+        }
+      
+
 
     }
 }

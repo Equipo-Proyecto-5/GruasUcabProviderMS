@@ -14,8 +14,9 @@
     <ProjectReference Include="..\ProviderMS.Domain\ProviderMS.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Repositories\" />
+	</ItemGroup>
 
 </Project>
