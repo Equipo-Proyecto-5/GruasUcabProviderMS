@@ -30,7 +30,7 @@ namespace ProviderMS.Application.Handlers
                 request.Proveedor.NumeroDocumentoIdentidad);
 
             if (proveedorExiste)
-            {
+        {
                 throw new ValidatorException("El proveedor ya cuenta con registro previo");
             }
 

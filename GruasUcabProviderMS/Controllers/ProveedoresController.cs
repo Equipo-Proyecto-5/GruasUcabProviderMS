@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+
+using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using ProviderMS.Application.Commands;

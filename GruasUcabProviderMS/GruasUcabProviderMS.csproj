@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ProviderMS.Application\ProviderMS.Application.csproj" />
+    <ProjectReference Include="..\ProviderMS.Commons\ProviderMS.Commons.csproj" />
     <ProjectReference Include="..\ProviderMS.Domain\ProviderMS.Domain.csproj" />
     <ProjectReference Include="..\ProviderMS.Infrastructure\ProviderMS.Infrastructure.csproj" />
   </ItemGroup>
