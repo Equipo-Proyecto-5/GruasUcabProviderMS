@@ -7,5 +7,7 @@ namespace ProviderMS.Core.Repositories
     {
 
         Task AddAsync(Proveedor proveedor);
+
+        Task<IEnumerable<Proveedor>> GetAllAsync();
     }
 }

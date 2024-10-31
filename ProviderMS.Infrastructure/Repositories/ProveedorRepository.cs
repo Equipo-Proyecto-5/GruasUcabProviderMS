@@ -20,5 +20,10 @@ namespace ProviderMS.Infrastructure.Repositories
             await db_context.Proveedor.AddAsync(proveedor);
             await db_context.SaveChangesAsync();
         }
+
+        public async Task<IEnumerable<Proveedor>> GetAllAsync()
+        {
+            return await db_context.Proveedor.ToListAsync();
+        }
     }
 }
