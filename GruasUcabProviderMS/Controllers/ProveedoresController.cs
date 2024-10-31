@@ -3,6 +3,7 @@ using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using ProviderMS.Application.Commands;
+using ProviderMS.Application.Queries;
 using ProviderMS.Commons.Dtos.Request;
 
 namespace ProviderMS.Controllers
@@ -46,6 +47,23 @@ namespace ProviderMS.Controllers
                 // Manejo específico de errores de validación
                 _logger.LogError(ex, "Validation errors occurred while creating a provider.");
                 return BadRequest(errors);
+            }
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllProveedores()
+        {
+            try
+            {
+                var query = new GetProveedorQuery();
+                var proveedores = await _mediator.Send(query);
+                return Ok(proveedores);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, "An error occurred while getting providers: {Message}", e.Message);
+                return StatusCode(500, "An error occurred while getting providers.");
             }
         }
     }

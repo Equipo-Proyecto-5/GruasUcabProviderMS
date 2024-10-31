@@ -25,5 +25,10 @@ namespace ProviderMS.Infrastructure.Repositories
         {
             return await db_context.Proveedor.AnyAsync(p => p.NumeroDocumentoIdentidad == numeroDocumentoIdentidad);
         }
+
+        public async Task<IEnumerable<Proveedor>> GetAllAsync()
+        {
+            return await db_context.Proveedor.ToListAsync();
+        }
     }
 }
