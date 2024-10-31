@@ -18,5 +18,16 @@ namespace ProviderMS.Domain.Entities
         public string NumeroDocumentoIdentidad { get; private set; }
         public string Estatus { get; private set; }
 
+        public Proveedor(Guid id, string denominacionComercial, string razonSocial, string direccionFisica, string tipoDocumentoIdentidad, string numeroDocumentoIdentidad, string estatus)
+        {
+            Id = id;
+            DenominacionComercial = denominacionComercial;
+            RazonSocial = razonSocial;
+            DireccionFisica = direccionFisica;
+            TipoDocumentoIdentidad = tipoDocumentoIdentidad;
+            NumeroDocumentoIdentidad = numeroDocumentoIdentidad;
+            Estatus = estatus;
+        }
+
     }
 }
