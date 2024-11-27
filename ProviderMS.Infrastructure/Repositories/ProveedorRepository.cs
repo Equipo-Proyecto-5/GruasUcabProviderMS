@@ -30,5 +30,18 @@ namespace ProviderMS.Infrastructure.Repositories
         {
             return await db_context.Proveedor.ToListAsync();
         }
+
+        public async Task ModifyAsyncProvider<T>(T proveedor) where T : Proveedor
+        {
+
+            var existingProvider = await db_context.Proveedor.FindAsync(proveedor.Id);
+            if (existingProvider == null)
+            {
+                throw new KeyNotFoundException("La empresa proveedora no se encontró.");
+            }
+
+            db_context.Entry(existingProvider).CurrentValues.SetValues(proveedor);
+            await db_context.SaveChangesAsync();
+        }
     }
 }

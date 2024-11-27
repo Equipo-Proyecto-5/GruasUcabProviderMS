@@ -66,5 +66,45 @@ namespace ProviderMS.Controllers
                 return StatusCode(500, "An error occurred while getting providers.");
             }
         }
+
+
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> ModifyProveedor(Guid id, [FromBody] ModifyProveedorDto proveedorDto)
+        {
+            // Verifica si el modelo es válido
+            if (!ModelState.IsValid)
+            {
+                
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                var command = new ModifyProveedorCommand(proveedorDto, id);
+                await _mediator.Send(command);
+                return NoContent();  
+            }
+            catch (ValidationException ex)
+            {
+               
+                var errors = new List<string>();
+                foreach (var failure in ex.Errors)
+                {
+                    Console.WriteLine("Propiedad: " + failure.PropertyName + " Error: " + failure.ErrorMessage);
+                    errors.Add($"Propiedad: {failure.PropertyName} Error: {failure.ErrorMessage}");
+                }
+
+                _logger.LogError(ex, "Validation errors occurred while modifying the provider.");
+                return BadRequest(errors);  
+            }
+            catch (Exception e)
+            {
+               
+                _logger.LogError(e, "An unexpected error occurred while modifying the provider.");
+                return StatusCode(500, "Ha ocurrido un error al modificar el proveedor: " + e.Message);
+            }
+        }
+
     }
 }

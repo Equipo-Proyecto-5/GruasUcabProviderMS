@@ -10,5 +10,7 @@ namespace ProviderMS.Core.Repositories
         Task<bool> IsProveedorExistingAsync(string NumeroDocumentoIdentidad);
 
         Task<IEnumerable<Proveedor>> GetAllAsync();
+
+        Task ModifyAsyncProvider<T>(T proveedor) where T : Proveedor;
     }
 }

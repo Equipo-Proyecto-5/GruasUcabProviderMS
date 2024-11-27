@@ -35,10 +35,21 @@ builder.Services.AddMediatR(typeof(CreateProveedorCommand).Assembly);
 
 
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin", policy =>
+    {
+        policy.WithOrigins("http://localhost:5173") // Solo permite solicitudes desde este origen
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+
 
 
 
 var app = builder.Build();
+app.UseCors("AllowSpecificOrigin");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
