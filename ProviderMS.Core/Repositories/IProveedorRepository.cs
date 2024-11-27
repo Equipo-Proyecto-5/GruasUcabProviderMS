@@ -12,5 +12,7 @@ namespace ProviderMS.Core.Repositories
         Task<IEnumerable<Proveedor>> GetAllAsync();
 
         Task ModifyAsyncProvider<T>(T proveedor) where T : Proveedor;
+
+        Task DeleteAsync(Guid Id);
     }
 }

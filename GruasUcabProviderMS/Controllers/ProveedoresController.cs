@@ -75,7 +75,7 @@ namespace ProviderMS.Controllers
             // Verifica si el modelo es válido
             if (!ModelState.IsValid)
             {
-                
+
                 return BadRequest(ModelState);
             }
 
@@ -83,11 +83,11 @@ namespace ProviderMS.Controllers
             {
                 var command = new ModifyProveedorCommand(proveedorDto, id);
                 await _mediator.Send(command);
-                return NoContent();  
+                return NoContent();
             }
             catch (ValidationException ex)
             {
-               
+
                 var errors = new List<string>();
                 foreach (var failure in ex.Errors)
                 {
@@ -96,15 +96,31 @@ namespace ProviderMS.Controllers
                 }
 
                 _logger.LogError(ex, "Validation errors occurred while modifying the provider.");
-                return BadRequest(errors);  
+                return BadRequest(errors);
             }
             catch (Exception e)
             {
-               
+
                 _logger.LogError(e, "An unexpected error occurred while modifying the provider.");
                 return StatusCode(500, "Ha ocurrido un error al modificar el proveedor: " + e.Message);
             }
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteProveedor(Guid id)
+        {
+            try
+            {
+                var command = new DeleteProveedorCommand(id);
+                await _mediator.Send(command);
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, "An unexpected error occurred while deleting the provider.");
+                return StatusCode(500, "An unexpected error occurred while deleting the provider.");
+            }
+
+        }
     }
 }

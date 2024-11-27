@@ -43,5 +43,15 @@ namespace ProviderMS.Infrastructure.Repositories
             db_context.Entry(existingProvider).CurrentValues.SetValues(proveedor);
             await db_context.SaveChangesAsync();
         }
+
+        public async Task DeleteAsync(Guid id)
+        {
+            var usuarioEncontrado = await db_context.Proveedor.FindAsync(id);
+            if (usuarioEncontrado is null) throw new InvalidOperationException("Proveedor no encontrado");
+
+            usuarioEncontrado.ActualizarEstatus("Inactivo");
+            db_context.Entry(usuarioEncontrado).Property(o => o.Estatus).IsModified = true;
+            await db_context.SaveChangesAsync();
+        }
     }
 }
