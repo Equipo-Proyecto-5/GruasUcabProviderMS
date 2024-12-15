@@ -8,5 +8,7 @@ namespace ProviderMS.Core.Repositories
 
         Task<bool> IsGruaExistingAsync(string Placa);
 
+        Task<IEnumerable<Grua>> GetAllAsyncGrua();
+
     }
 }
