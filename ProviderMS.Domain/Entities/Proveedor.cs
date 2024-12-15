@@ -16,7 +16,8 @@ namespace ProviderMS.Domain.Entities
         public string NumeroDocumentoIdentidad { get; private set; }
         public string Estatus { get; private set; }
 
-        
+        public ICollection<Grua> Gruas{ get; set;}
+
 
         public Proveedor(Guid id, string denominacionComercial, string razonSocial, string direccionFisica, string tipoDocumentoIdentidad, string numeroDocumentoIdentidad, string estatus)
         {
@@ -36,7 +37,17 @@ namespace ProviderMS.Domain.Entities
         {
             Estatus = estatus;
         }
-      
+
+        public void AgregarGrua(Grua grua)
+        {
+            if (grua == null)
+            {
+                throw new ArgumentNullException(nameof(grua));
+            }
+            Gruas.Add(grua);
+        }
+
+
 
 
     }

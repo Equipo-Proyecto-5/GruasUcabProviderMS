@@ -12,7 +12,7 @@ using ProviderMS.Infrastructure.Database;
 namespace ProviderMS.Infrastructure.Migrations
 {
     [DbContext(typeof(ProviderDbContext))]
-    [Migration("20241030233226_InitialTableProvider")]
+    [Migration("20241215175821_InitialTableProvider")]
     partial class InitialTableProvider
     {
         /// <inheritdoc />
@@ -24,6 +24,62 @@ namespace ProviderMS.Infrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("ProviderMS.Domain.Entities.Grua", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Año")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Color")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Estatus")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Hora")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Latitud")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Localizacion")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Longitud")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Marca")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Modelo")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Placa")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<Guid?>("ProveedorId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Tipo")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProveedorId");
+
+                    b.ToTable("Grua");
+                });
 
             modelBuilder.Entity("ProviderMS.Domain.Entities.Proveedor", b =>
                 {
@@ -64,6 +120,21 @@ namespace ProviderMS.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Proveedor");
+                });
+
+            modelBuilder.Entity("ProviderMS.Domain.Entities.Grua", b =>
+                {
+                    b.HasOne("ProviderMS.Domain.Entities.Proveedor", "Proveedor")
+                        .WithMany("Gruas")
+                        .HasForeignKey("ProveedorId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Proveedor");
+                });
+
+            modelBuilder.Entity("ProviderMS.Domain.Entities.Proveedor", b =>
+                {
+                    b.Navigation("Gruas");
                 });
 #pragma warning restore 612, 618
         }

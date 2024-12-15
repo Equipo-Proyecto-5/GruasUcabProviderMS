@@ -14,6 +14,7 @@ namespace ProviderMS.Core.Database
         DbContext DbContext { get; }
 
         DbSet<Proveedor> Proveedor { get; set; }
-      
+        DbSet<Grua> Grua { get; set; }
+
     }
 }

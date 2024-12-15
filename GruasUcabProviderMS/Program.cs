@@ -21,6 +21,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IProviderDbContext, ProviderDbContext>();
+builder.Services.AddTransient<IGruaRepository, GruaRepository>();
 var dbConnectionString = builder.Configuration.GetValue<string>("DBConnectionString");
 builder.Services.AddDbContext<ProviderDbContext>(options =>
     options.UseNpgsql(dbConnectionString));

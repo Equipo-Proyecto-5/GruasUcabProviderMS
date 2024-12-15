@@ -22,7 +22,8 @@ namespace ProviderMS.Infrastructure.Database
         }
 
         public DbSet<Proveedor> Proveedor {  get; set; }
-        
+        public DbSet<Grua> Grua { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

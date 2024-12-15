@@ -21,6 +21,13 @@ namespace ProviderMS.Infrastructure.Database.Configurations
             builder.Property(s=>s.TipoDocumentoIdentidad).IsRequired().HasMaxLength(1);
             builder.Property(s => s.NumeroDocumentoIdentidad).IsRequired().HasMaxLength(10);
             builder.Property(s=>s.Estatus).IsRequired().HasMaxLength(15);
+
+            builder
+           .HasMany(proveedor => proveedor.Gruas) // Un proveedor tiene muchas grúas
+           .WithOne(grua => grua.Proveedor) // Una grúa tiene un proveedor
+           .HasForeignKey(grua => grua.ProveedorId) // Clave foránea en Grua
+           .OnDelete(DeleteBehavior.Cascade); // Elimina las grúas si se elimina el proveedor
         }
     }
-}
+ }
+
