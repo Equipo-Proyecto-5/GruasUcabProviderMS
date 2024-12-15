@@ -12,6 +12,10 @@ namespace ProviderMS.Application.Mapper
             CreateMap<CreateGruaDto, Grua>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => Guid.NewGuid()))
                 .ForMember(dest => dest.Estatus, opt => opt.MapFrom(src => "Activo")); // Asigna "Activo" al status
+
+
+            CreateMap<ModifyGruaDto, Grua>()
+                    .ForMember(dest => dest.Estatus, opt => opt.MapFrom(src => "Activo"));
         }
     }
 }

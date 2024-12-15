@@ -10,5 +10,7 @@ namespace ProviderMS.Core.Repositories
 
         Task<IEnumerable<Grua>> GetAllAsyncGrua();
 
+        Task ModifyAsyncGrua<T>(T grua) where T : Grua;
+
     }
 }

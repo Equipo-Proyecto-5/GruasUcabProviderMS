@@ -33,5 +33,18 @@ namespace ProviderMS.Infrastructure.Repositories
             return await db_context.Grua.ToListAsync();
         }
 
+        public async Task ModifyAsyncGrua<T>(T grua) where T : Grua
+        {
+
+            var existingGrua = await db_context.Grua.FindAsync(grua.Id);
+            if (existingGrua == null)
+            {
+                throw new KeyNotFoundException("La grua no se encontró.");
+            }
+
+            db_context.Entry(existingGrua).CurrentValues.SetValues(grua);
+            await db_context.SaveChangesAsync();
+        }
+
     }
 }
