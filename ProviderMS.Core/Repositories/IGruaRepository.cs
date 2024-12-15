@@ -1,0 +1,12 @@
+﻿using ProviderMS.Domain.Entities;
+
+namespace ProviderMS.Core.Repositories
+{
+    public interface IGruaRepository
+    {
+        Task AddAsyncGrua(Grua grua);
+
+        Task<bool> IsGruaExistingAsync(string Placa);
+
+    }
+}
