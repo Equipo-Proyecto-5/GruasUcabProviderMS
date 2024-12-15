@@ -19,9 +19,4 @@
     <ProjectReference Include="..\ProviderMS.Core\ProviderMS.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Handlers\Queries\" />
-    <Folder Include="Queries\" />
-  </ItemGroup>
-
 </Project>

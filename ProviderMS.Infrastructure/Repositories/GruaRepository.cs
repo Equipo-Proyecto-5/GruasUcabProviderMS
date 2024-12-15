@@ -27,5 +27,11 @@ namespace ProviderMS.Infrastructure.Repositories
             return await db_context.Grua.AnyAsync(p => p.Placa == placa);
         }
 
+
+        public async Task<IEnumerable<Grua>> GetAllAsyncGrua()
+        {
+            return await db_context.Grua.ToListAsync();
+        }
+
     }
 }

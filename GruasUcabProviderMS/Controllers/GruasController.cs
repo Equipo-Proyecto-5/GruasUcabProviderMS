@@ -2,6 +2,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using ProviderMS.Application.Commands.Grua;
+using ProviderMS.Application.Queries;
 using ProviderMS.Commons.Dtos.Request.Grua;
 
 namespace GruasUcabProviderMS.Controllers
@@ -49,6 +50,25 @@ namespace GruasUcabProviderMS.Controllers
                 // Manejo específico de errores de validación
                 _logger.LogError(ex, "Validation errors occurred while creating a crane.");
                 return BadRequest(errors);
+            }
+        }
+
+
+
+        [HttpGet]
+
+        public async Task<IActionResult> GetAllGruas()
+        {
+            try
+            {
+                var query = new GetGruaQuery();
+                var gruas = await _mediator.Send(query);
+                return Ok(gruas);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while getting all cranes.");
+                return StatusCode(500, "An error occurred while getting all cranes.");
             }
         }
 
