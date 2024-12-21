@@ -8,6 +8,7 @@ namespace ProviderMS.Commons.Dtos.Request.Grua
 {
     public class ModifyGruaDto
     {
+        public Guid ProveedorId { get; set; }
         public Guid Id { get; set; }
         public string Tipo { get; set; }
         public string Marca { get; set; }
