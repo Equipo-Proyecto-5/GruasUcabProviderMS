@@ -7,5 +7,15 @@ namespace ProviderMS.Domain.Entities
         public string Tipo { get; private set; }
         public Guid? ProveedorId { get;  set; }
         public Proveedor Proveedor { get; set; }
+
+
+
+        public void ActualizarEstatus(string estatus)
+        {
+            Estatus = estatus;
+        }
     }
+
+
+
 }

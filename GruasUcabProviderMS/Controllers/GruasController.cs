@@ -114,5 +114,21 @@ namespace GruasUcabProviderMS.Controllers
         }
 
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteGrua(Guid id)
+        {
+            try
+            {
+                var command = new DeleteGruaCommand(id);
+                await _mediator.Send(command);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while deleting the crane.");
+                return StatusCode(500, "An error occurred while deleting the crane.");
+            }
+        }
+
     }
 }
