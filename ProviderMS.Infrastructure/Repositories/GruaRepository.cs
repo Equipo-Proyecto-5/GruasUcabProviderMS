@@ -46,5 +46,16 @@ namespace ProviderMS.Infrastructure.Repositories
             await db_context.SaveChangesAsync();
         }
 
+
+        public async Task DeleteAsyncGrua(Guid id)
+        {
+            var existingGrua = await db_context.Grua.FindAsync(id);
+            if (existingGrua is null) throw new InvalidOperationException("Grua no encontrada");
+
+            existingGrua.ActualizarEstatus("Inactivo");
+            db_context.Entry(existingGrua).Property(o => o.Estatus).IsModified = true;
+            await db_context.SaveChangesAsync();
+        }
+
     }
 }
