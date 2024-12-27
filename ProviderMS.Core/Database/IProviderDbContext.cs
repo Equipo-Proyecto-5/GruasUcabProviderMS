@@ -15,6 +15,6 @@ namespace ProviderMS.Core.Database
 
         DbSet<Proveedor> Proveedor { get; set; }
         DbSet<Grua> Grua { get; set; }
-
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 }

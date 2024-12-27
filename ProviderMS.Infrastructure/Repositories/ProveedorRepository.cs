@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ProviderMS.Core.Database;
 using ProviderMS.Core.Repositories;
 using ProviderMS.Domain.Entities;
 using ProviderMS.Infrastructure.Database;
@@ -8,9 +9,9 @@ namespace ProviderMS.Infrastructure.Repositories
 {
     public class ProveedorRepository : IProveedorRepository
     {
-        private readonly ProviderDbContext db_context;
+        private readonly IProviderDbContext db_context;
 
-        public ProveedorRepository(ProviderDbContext context)
+        public ProveedorRepository(IProviderDbContext context)
         {
             db_context = context;
         }
@@ -40,7 +41,7 @@ namespace ProviderMS.Infrastructure.Repositories
                 throw new KeyNotFoundException("La empresa proveedora no se encontró.");
             }
 
-            db_context.Entry(existingProvider).CurrentValues.SetValues(proveedor);
+            db_context.Proveedor.Entry(existingProvider).CurrentValues.SetValues(proveedor);
             await db_context.SaveChangesAsync();
         }
 
@@ -50,7 +51,7 @@ namespace ProviderMS.Infrastructure.Repositories
             if (usuarioEncontrado is null) throw new InvalidOperationException("Proveedor no encontrado");
 
             usuarioEncontrado.ActualizarEstatus("Inactivo");
-            db_context.Entry(usuarioEncontrado).Property(o => o.Estatus).IsModified = true;
+            db_context.Proveedor.Entry(usuarioEncontrado).Property(o => o.Estatus).IsModified = true;
             await db_context.SaveChangesAsync();
         }
     }

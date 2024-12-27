@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ProviderMS.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialTableProvider : Migration
+    public partial class MigracionInicial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -42,8 +42,8 @@ namespace ProviderMS.Infrastructure.Migrations
                     Color = table.Column<string>(type: "text", nullable: false),
                     Estatus = table.Column<string>(type: "text", nullable: false),
                     Localizacion = table.Column<string>(type: "text", nullable: true),
-                    Longitud = table.Column<string>(type: "text", nullable: true),
-                    Latitud = table.Column<string>(type: "text", nullable: true),
+                    Longitud = table.Column<double>(type: "double precision", nullable: true),
+                    Latitud = table.Column<double>(type: "double precision", nullable: true),
                     Hora = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>

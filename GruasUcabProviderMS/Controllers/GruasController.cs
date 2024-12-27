@@ -73,6 +73,21 @@ namespace GruasUcabProviderMS.Controllers
                 return StatusCode(500, "An error occurred while getting all cranes.");
             }
         }
+        [HttpGet("/locations")]
+        public async Task<IActionResult> GetAllUbicacionGruas()
+        {
+            try
+            {
+                var query = new GetGruasUbicacionQuery();
+                var gruas = await _mediator.Send(query);
+                return Ok(gruas);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while getting all cranes.");
+                return StatusCode(500, "An error occurred while getting all cranes.");
+            }
+        }
 
 
         [HttpPut("{id}")]
