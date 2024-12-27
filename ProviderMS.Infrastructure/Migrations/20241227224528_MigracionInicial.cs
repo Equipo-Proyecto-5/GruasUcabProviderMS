@@ -44,7 +44,7 @@ namespace ProviderMS.Infrastructure.Migrations
                     Localizacion = table.Column<string>(type: "text", nullable: true),
                     Longitud = table.Column<double>(type: "double precision", nullable: true),
                     Latitud = table.Column<double>(type: "double precision", nullable: true),
-                    Hora = table.Column<string>(type: "text", nullable: true)
+                    Hora = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
                 constraints: table =>
                 {

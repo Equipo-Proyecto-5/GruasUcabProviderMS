@@ -25,7 +25,7 @@ namespace ProviderMS.Domain.Entities
 
         public double? Latitud { get; set; }
 
-        public string? Hora { get; set; }
+        public DateTime? Hora { get; set; }
 
     }
 }

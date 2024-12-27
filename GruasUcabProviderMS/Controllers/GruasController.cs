@@ -88,6 +88,21 @@ namespace GruasUcabProviderMS.Controllers
                 return StatusCode(500, "An error occurred while getting all cranes.");
             }
         }
+        [HttpGet("/expired")]
+        public async Task<IActionResult> GetAllExpiredGruas()
+        {
+            try
+            {
+                var query = new GetLocalizacionVencidaQuery();
+                await _mediator.Send(query);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while getting all cranes.");
+                return StatusCode(500, "An error occurred while getting all cranes.");
+            }
+        }
 
 
         [HttpPut("{id}")]
