@@ -24,7 +24,7 @@ namespace ProviderMS.Infrastructure.Database.Configurations
             builder.Property(s => s.Localizacion).HasMaxLength(30);
             //builder.Property(s => s.Longitud).HasMaxLength(30);
            // builder.Property(s => s.Latitud).HasMaxLength(30);
-            builder.Property(s => s.Hora).HasMaxLength(30);
+           /// builder.Property(s => s.Hora).HasMaxLength(30);
 
             builder
             .HasOne(grua => grua.Proveedor) // Una grúa tiene un proveedor

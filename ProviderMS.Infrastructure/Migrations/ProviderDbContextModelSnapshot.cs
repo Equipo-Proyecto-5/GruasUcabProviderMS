@@ -40,8 +40,8 @@ namespace ProviderMS.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Hora")
-                        .HasColumnType("text");
+                    b.Property<DateTime?>("Hora")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<double?>("Latitud")
                         .HasColumnType("double precision");

@@ -12,7 +12,7 @@ using ProviderMS.Infrastructure.Database;
 namespace ProviderMS.Infrastructure.Migrations
 {
     [DbContext(typeof(ProviderDbContext))]
-    [Migration("20241227154440_MigracionInicial")]
+    [Migration("20241227224528_MigracionInicial")]
     partial class MigracionInicial
     {
         /// <inheritdoc />
@@ -43,8 +43,8 @@ namespace ProviderMS.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Hora")
-                        .HasColumnType("text");
+                    b.Property<DateTime?>("Hora")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<double?>("Latitud")
                         .HasColumnType("double precision");
