@@ -13,6 +13,7 @@ namespace ProviderMS.Core.Repositories
         Task ModifyAsyncGrua<T>(T grua) where T : Grua;
 
         Task DeleteAsyncGrua(Guid Id);
+       
 
     }
 }

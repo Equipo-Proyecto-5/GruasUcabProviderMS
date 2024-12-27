@@ -43,14 +43,14 @@ namespace ProviderMS.Infrastructure.Migrations
                     b.Property<string>("Hora")
                         .HasColumnType("text");
 
-                    b.Property<string>("Latitud")
-                        .HasColumnType("text");
+                    b.Property<double?>("Latitud")
+                        .HasColumnType("double precision");
 
                     b.Property<string>("Localizacion")
                         .HasColumnType("text");
 
-                    b.Property<string>("Longitud")
-                        .HasColumnType("text");
+                    b.Property<double?>("Longitud")
+                        .HasColumnType("double precision");
 
                     b.Property<string>("Marca")
                         .IsRequired()

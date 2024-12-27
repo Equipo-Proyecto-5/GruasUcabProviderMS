@@ -22,8 +22,8 @@ namespace ProviderMS.Infrastructure.Database.Configurations
             builder.Property(s => s.Color).IsRequired().HasMaxLength(10);
             builder.Property(s => s.Estatus).IsRequired().HasMaxLength(15);
             builder.Property(s => s.Localizacion).HasMaxLength(30);
-            builder.Property(s => s.Longitud).HasMaxLength(30);
-            builder.Property(s => s.Latitud).HasMaxLength(30);
+            //builder.Property(s => s.Longitud).HasMaxLength(30);
+           // builder.Property(s => s.Latitud).HasMaxLength(30);
             builder.Property(s => s.Hora).HasMaxLength(30);
 
             builder

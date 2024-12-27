@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ProviderMS.Core.Database;
 using ProviderMS.Core.Repositories;
 using ProviderMS.Domain.Entities;
 using ProviderMS.Infrastructure.Database;
@@ -8,9 +9,9 @@ namespace ProviderMS.Infrastructure.Repositories
     public class GruaRepository: IGruaRepository
     {
 
-        private readonly ProviderDbContext db_context;
+        private readonly IProviderDbContext db_context;
 
-        public GruaRepository(ProviderDbContext context)
+        public GruaRepository(IProviderDbContext context)
         {
             db_context = context;
         }
@@ -42,7 +43,7 @@ namespace ProviderMS.Infrastructure.Repositories
                 throw new KeyNotFoundException("La grua no se encontró.");
             }
 
-            db_context.Entry(existingGrua).CurrentValues.SetValues(grua);
+            db_context.Grua.Entry(existingGrua).CurrentValues.SetValues(grua);
             await db_context.SaveChangesAsync();
         }
 
@@ -53,7 +54,7 @@ namespace ProviderMS.Infrastructure.Repositories
             if (existingGrua is null) throw new InvalidOperationException("Grua no encontrada");
 
             existingGrua.ActualizarEstatus("Inactivo");
-            db_context.Entry(existingGrua).Property(o => o.Estatus).IsModified = true;
+            db_context.Grua.Entry(existingGrua).Property(o => o.Estatus).IsModified = true;
             await db_context.SaveChangesAsync();
         }
 
