@@ -12,7 +12,19 @@ using UsersMS.Application.Mapper;
 using ProviderMS.Application.Validators;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Configuración explícita de URLs
+builder.WebHost.UseUrls("http://+:5039", "https://+:7255");
+
 var applicationAssembly = Assembly.Load("ProviderMS.Application");
+
+
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(5039); // Puerto HTTP
+    options.ListenAnyIP(7255); // Puerto HTTPS
+});
+
 
 // Add services to the container.
 
@@ -22,7 +34,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IProviderDbContext, ProviderDbContext>();
 builder.Services.AddTransient<IGruaRepository, GruaRepository>();
-var dbConnectionString = builder.Configuration.GetValue<string>("DBConnectionString");
+var dbConnectionString = builder.Configuration.GetConnectionString("DBConnectionString");
 builder.Services.AddDbContext<ProviderDbContext>(options =>
     options.UseNpgsql(dbConnectionString));
 builder.Services.AddAutoMapper(typeof(EntryProveedorMapper));
@@ -59,7 +71,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

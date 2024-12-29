@@ -11,9 +11,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProviderMS.Application", "P
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProviderMS.Infrastructure", "ProviderMS.Infrastructure\ProviderMS.Infrastructure.csproj", "{49561040-9FD1-46C0-8F15-E979B1EBE499}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProviderMS.Core", "ProviderMS.Core\ProviderMS.Core.csproj", "{DCC4E20E-2415-4D2B-A812-890272250463}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProviderMS.Core", "ProviderMS.Core\ProviderMS.Core.csproj", "{DCC4E20E-2415-4D2B-A812-890272250463}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProviderMS.Commons", "ProviderMS.Commons\ProviderMS.Commons.csproj", "{6EB00CC0-1094-47BF-81DA-CC71AE8F1DAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProviderMS.Commons", "ProviderMS.Commons\ProviderMS.Commons.csproj", "{6EB00CC0-1094-47BF-81DA-CC71AE8F1DAC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución", "Elementos de la solución", "{9EAA165C-3D90-4AF8-9AF9-DC85D07ABE37}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yaml = docker-compose.yaml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

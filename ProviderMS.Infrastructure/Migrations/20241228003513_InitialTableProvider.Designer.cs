@@ -12,8 +12,8 @@ using ProviderMS.Infrastructure.Database;
 namespace ProviderMS.Infrastructure.Migrations
 {
     [DbContext(typeof(ProviderDbContext))]
-    [Migration("20241227224528_MigracionInicial")]
-    partial class MigracionInicial
+    [Migration("20241228003513_InitialTableProvider")]
+    partial class InitialTableProvider
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
