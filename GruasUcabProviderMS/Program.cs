@@ -13,6 +13,22 @@ using ProviderMS.Application.Validators;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+// Obtener y mostrar solo las variables relacionadas con la base de datos
+Console.WriteLine("Variables de entorno relacionadas con la base de datos:");
+
+// Acceder a la variable de conexión de la base de datos
+var dbConnectionString = builder.Configuration.GetConnectionString("DBConnectionString");
+Console.WriteLine($"DBConnectionString: {dbConnectionString}");
+
+// Si la cadena de conexión se guarda como una variable de entorno,
+// también puedes acceder a ella de esta manera:
+var dbConnectionStringFromEnv = Environment.GetEnvironmentVariable("DBConnectionString");
+if (!string.IsNullOrEmpty(dbConnectionStringFromEnv))
+{
+    Console.WriteLine($"DBConnectionString desde la variable de entorno: {dbConnectionStringFromEnv}");
+}
+
 // Configuración explícita de URLs
 builder.WebHost.UseUrls("http://+:5039", "https://+:7255");
 
@@ -34,7 +50,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IProviderDbContext, ProviderDbContext>();
 builder.Services.AddTransient<IGruaRepository, GruaRepository>();
-var dbConnectionString = builder.Configuration.GetConnectionString("DBConnectionString");
+//var dbConnectionString = builder.Configuration.GetConnectionString("DBConnectionString");
 builder.Services.AddDbContext<ProviderDbContext>(options =>
     options.UseNpgsql(dbConnectionString));
 builder.Services.AddAutoMapper(typeof(EntryProveedorMapper));

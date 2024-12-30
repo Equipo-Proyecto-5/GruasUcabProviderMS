@@ -13,7 +13,7 @@ services:
       - db
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DBConnectionString=Server=db;Database=PruebaGruasUcabProvider;Username=postgres;Password=123456;
+      - ConnectionStrings__DBConnectionString=Host=db;Database=PruebaGruasUcabProvider;Username=postgres;Password=123456;
       - ASPNETCORE_URLS=http://+:5039;https://+:7255
     networks:
       - mynetwork
