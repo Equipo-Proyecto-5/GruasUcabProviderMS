@@ -80,6 +80,23 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 app.UseCors("AllowSpecificOrigin");
 
+
+
+// Aplicar migraciones automáticamente al inicio
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<ProviderDbContext>();
+    try
+    {
+        dbContext.Database.Migrate();
+        Console.WriteLine("Migraciones aplicadas con éxito.");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error al aplicar las migraciones: {ex.Message}");
+    }
+}
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

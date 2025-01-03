@@ -18,8 +18,7 @@ services:
     networks:
       - mynetwork
     command: >
-      sh -c "dotnet ef database update --no-build &&
-             dotnet GruasUcabProviderMS.dll"
+      sh -c "./wait-for-it.sh db:5432 -- dotnet ef database update --no-build && dotnet GruasUcabProviderMS.dll"
 
   db:
     image: postgres:latest

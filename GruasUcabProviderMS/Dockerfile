@@ -2,6 +2,10 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
+# Agregar wait-for-it.sh y darle permisos
+COPY wait-for-it.sh /wait-for-it.sh
+RUN chmod +x /wait-for-it.sh
+
 # Copiar los archivos de proyecto de todas las capas y restaurar dependencias
 COPY GruasUcabProviderMS/GruasUcabProviderMS.csproj ./GruasUcabProviderMS/
 COPY ProviderMS.Application/ProviderMS.Application.csproj ./ProviderMS.Application/
