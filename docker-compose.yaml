@@ -9,33 +9,15 @@ services:
     ports:
       - "5039:5039"
       - "7255:7255"
-    depends_on:
-      - db
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DBConnectionString=Host=db;Database=PruebaGruasUcabProvider;Username=postgres;Password=123456;
+      - ConnectionStrings__DBConnectionString=Host=labs-dbservices01.ucab.edu.ve;Database=GruasUcabProviderMS;Port=5432;Username=gmartinez;Password=123456;
       - ASPNETCORE_URLS=http://+:5039;https://+:7255
     networks:
       - mynetwork
     command: >
-      sh -c "./wait-for-it.sh db:5432 -- dotnet ef database update --no-build && dotnet GruasUcabProviderMS.dll"
+      sh -c "dotnet ef database update --no-build && dotnet GruasUcabProviderMS.dll"
 
-  db:
-    image: postgres:latest
-    container_name: db
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 123456
-      POSTGRES_DB: PruebaGruasUcabProvider
-    ports:
-      - "5432:5432"
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-    networks:
-    - mynetwork
-
-volumes:
-  pgdata:
 
 networks:
   mynetwork:

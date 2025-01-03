@@ -14,8 +14,6 @@ using ProviderMS.Application.Validators;
 var builder = WebApplication.CreateBuilder(args);
 
 
-// Obtener y mostrar solo las variables relacionadas con la base de datos
-Console.WriteLine("Variables de entorno relacionadas con la base de datos:");
 
 // Acceder a la variable de conexión de la base de datos
 var dbConnectionString = builder.Configuration.GetConnectionString("DBConnectionString");
@@ -80,22 +78,6 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 app.UseCors("AllowSpecificOrigin");
 
-
-
-// Aplicar migraciones automáticamente al inicio
-using (var scope = app.Services.CreateScope())
-{
-    var dbContext = scope.ServiceProvider.GetRequiredService<ProviderDbContext>();
-    try
-    {
-        dbContext.Database.Migrate();
-        Console.WriteLine("Migraciones aplicadas con éxito.");
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"Error al aplicar las migraciones: {ex.Message}");
-    }
-}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
