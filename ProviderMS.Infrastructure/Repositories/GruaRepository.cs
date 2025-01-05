@@ -31,8 +31,11 @@ namespace ProviderMS.Infrastructure.Repositories
 
         public async Task<IEnumerable<Grua>> GetAllAsyncGrua()
         {
-            return await db_context.Grua.ToListAsync();
+            return await db_context.Grua
+                .Include(g => g.Proveedor) // Incluir el proveedor relacionado
+                .ToListAsync();
         }
+
 
         public async Task ModifyAsyncGrua<T>(T grua) where T : Grua
         {

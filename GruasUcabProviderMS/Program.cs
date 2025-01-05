@@ -28,16 +28,16 @@ if (!string.IsNullOrEmpty(dbConnectionStringFromEnv))
 }
 
 // Configuración explícita de URLs
-builder.WebHost.UseUrls("http://+:5039", "https://+:7255");
+//builder.WebHost.UseUrls("http://+:5039", "https://+:7255");
 
 var applicationAssembly = Assembly.Load("ProviderMS.Application");
 
 
-builder.WebHost.ConfigureKestrel(options =>
-{
-    options.ListenAnyIP(5039); // Puerto HTTP
-    options.ListenAnyIP(7255); // Puerto HTTPS
-});
+//builder.WebHost.ConfigureKestrel(options =>
+//{
+//    options.ListenAnyIP(5039); // Puerto HTTP
+//    options.ListenAnyIP(7255); // Puerto HTTPS
+//});
 
 
 // Add services to the container.

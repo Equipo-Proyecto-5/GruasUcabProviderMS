@@ -13,5 +13,6 @@ namespace ProviderMS.Commons.Dtos.Respose
         public string Placa { get; set; }
         public string Color { get; set; }
         public string Estatus { get; set; }
+        public string DenominacionComercial { get; set; }
     }
 }
