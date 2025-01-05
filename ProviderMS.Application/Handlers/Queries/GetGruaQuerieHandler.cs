@@ -29,7 +29,8 @@ namespace ProviderMS.Application.Handlers.Queries
                 Modelo = grua.Modelo,
                 Color = grua.Color,
                 Año = grua.Año,
-                Estatus = grua.Estatus
+                Estatus = grua.Estatus,
+                DenominacionComercial = grua.Proveedor.DenominacionComercial // Mapear el nombre del proveedor
             }).ToList();
         }
     }
