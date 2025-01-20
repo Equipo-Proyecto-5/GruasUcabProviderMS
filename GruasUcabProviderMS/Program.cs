@@ -28,16 +28,16 @@ if (!string.IsNullOrEmpty(dbConnectionStringFromEnv))
 }
 
 // Configuración explícita de URLs
-//builder.WebHost.UseUrls("http://+:5039", "https://+:7255");
+builder.WebHost.UseUrls("http://+:5039", "https://+:7255");
 
 var applicationAssembly = Assembly.Load("ProviderMS.Application");
 
 
-//builder.WebHost.ConfigureKestrel(options =>
-//{
-//    options.ListenAnyIP(5039); // Puerto HTTP
-//    options.ListenAnyIP(7255); // Puerto HTTPS
-//});
+builder.WebHost.ConfigureKestrel(options =>
+{
+   options.ListenAnyIP(5039); // Puerto HTTP
+    options.ListenAnyIP(7255); // Puerto HTTPS
+});
 
 
 // Add services to the container.
@@ -48,7 +48,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IProviderDbContext, ProviderDbContext>();
 builder.Services.AddTransient<IGruaRepository, GruaRepository>();
-//var dbConnectionString = builder.Configuration.GetConnectionString("DBConnectionString");
 builder.Services.AddDbContext<ProviderDbContext>(options =>
     options.UseNpgsql(dbConnectionString));
 builder.Services.AddAutoMapper(typeof(EntryProveedorMapper));
@@ -64,11 +63,11 @@ builder.Services.AddMediatR(typeof(CreateProveedorCommand).Assembly);
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowSpecificOrigin", policy =>
-    {
-        policy.WithOrigins("http://localhost:5173") // Solo permite solicitudes desde este origen
+    options.AddPolicy("AllowAllOrigins", policy =>
+   {
+        policy.AllowAnyOrigin() // Permite solicitudes desde cualquier origen
               .AllowAnyMethod()
-              .AllowAnyHeader();
+             .AllowAnyHeader();
     });
 });
 

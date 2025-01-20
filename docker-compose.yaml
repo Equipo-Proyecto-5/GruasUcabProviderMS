@@ -12,7 +12,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__DBConnectionString=Host=labs-dbservices01.ucab.edu.ve;Database=GruasUcabProviderMS;Port=5432;Username=gmartinez;Password=123456;
-      - ASPNETCORE_URLS=http://+:5039;https://+:7255
+      - ASPNETCORE_URLS=http://+:5039
     networks:
       - mynetwork
     command: >
